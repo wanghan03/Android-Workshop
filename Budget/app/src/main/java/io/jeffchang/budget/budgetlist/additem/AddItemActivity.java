@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import io.jeffchang.budget.R;
-import io.jeffchang.budget.budgetlist.BudgetItem;
+import io.jeffchang.budget.model.BudgetItem;
 
 public class AddItemActivity extends AppCompatActivity {
 
@@ -40,7 +40,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         float amount = Float.parseFloat(amountEditText.getText().toString());
         return new BudgetItem(
-                "id",
+                null,
                 categoryEditText.getText().toString(),
                 titleEditText.getText().toString(),
                 amount

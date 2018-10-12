@@ -1,17 +1,22 @@
-package io.jeffchang.budget.budgetlist;
+package io.jeffchang.budget.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+
+import com.squareup.moshi.Json;
 
 public class BudgetItem implements Parcelable {
 
+    @Json(name = "id")
     private String id;
 
+    @Json(name = "name")
     private String name;
 
+    @Json(name = "category")
     private String category;
 
+    @Json(name = "amount")
     private float amount;
 
     public BudgetItem(

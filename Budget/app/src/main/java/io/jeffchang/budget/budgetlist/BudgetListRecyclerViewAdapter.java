@@ -9,23 +9,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.jeffchang.budget.R;
+import io.jeffchang.budget.model.BudgetItem;
 
 public class BudgetListRecyclerViewAdapter extends RecyclerView.Adapter<
         BudgetListRecyclerViewAdapter.BudgetListViewHolder> {
 
-    private ArrayList<BudgetItem> budgetItems;
+    private ArrayList<BudgetItem> budgetItems = new ArrayList<>();
 
     float sum = 0;
-
-    public BudgetListRecyclerViewAdapter(ArrayList<BudgetItem> budgetItems) {
-        this.budgetItems = budgetItems;
-
-        for (int i = 0; i < budgetItems.size(); i++) {
-            sum += budgetItems.get(i).getAmount();
-        }
-    }
 
     @NonNull
     @Override
@@ -59,6 +53,18 @@ public class BudgetListRecyclerViewAdapter extends RecyclerView.Adapter<
         sum += budgetItem.getAmount();
 
         notifyDataSetChanged();
+        return sum;
+    }
+
+    // Adds and updates a list of budget items and return the sum of all of those amounts.
+    public float addBudgetItemList(List<BudgetItem> budgetItemList) {
+        budgetItems.addAll(budgetItemList);
+
+        notifyDataSetChanged();
+
+        for (int i = 0; i < budgetItemList.size(); i++) {
+            sum += budgetItemList.get(i).getAmount();
+        }
         return sum;
     }
 
